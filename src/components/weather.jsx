@@ -1,18 +1,17 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
+import "./weather.css";
+import React from "react";
 
-const Weather = () => {
+const Weather = (props) => {
     return (
         <div className="container">
-            <div className="cards">
-                <h1>City</h1>
-                <h5>
-                    <FontAwesomeIcon icon={ faSun } />
+            <div>
+                <h1 className="location">{props.location}</h1>
+                <h5 className="weather-icon">
+                    <img src={"http://openweathermap.org/img/wn/" + props.icon + "@2x.png"} alt="" />
                 </h5>
-                <h1>10&deg;</h1>
-                { minmaxTemp(24, 19) }
-                <h4>Sunny</h4>
+                <h4 className="description">{props.description}</h4>
+                <h1 className="temp">{props.temp}</h1>
+                {minmaxTemp(props.temp_min, props.temp_max)}
             </div>
         </div>
     );
@@ -21,9 +20,9 @@ const Weather = () => {
 
 const minmaxTemp = (min, max) => {
     return (
-        <h3>
-            <span>{ min }&deg;</span>
-            <span>{ max }&deg;</span>
+        <h3 className="minmaxTemp">
+            <span>{min}</span>
+            <span>{max}</span>
         </h3>
     );
 };
