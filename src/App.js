@@ -26,7 +26,7 @@ class App extends React.Component {
 
     if (city && country) {
       const req = await fetch(
-        `https://orient.pythonanywhere.com/openweathermap/weather?q=${city},${country}`
+        `https://orient.onrender.com/openweathermap/weather?q=${city},${country}`
       );
 
       const res = await req.json();
