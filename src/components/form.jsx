@@ -18,6 +18,7 @@ const Form = (props) => {
           <Autocomplete
             id="country"
             autoHighlight
+            autoSelect
             getOptionLabel={(option) => option.name}
             onChange={(e, value) => {
               if (value) props.setAlphaTwo({ alphaTwo: [value.alphaTwo][0] });
