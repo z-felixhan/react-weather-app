@@ -28,10 +28,11 @@ class App extends React.Component {
 
   getWeather = async (e) => {
     e.preventDefault();
-    this.setState({ ...initial, error: false, loading: true });
+    this.setState({ error: false, loading: true });
 
     const city = e.target.elements.city.value;
     const country = this.state.alphaTwo;
+    console.log(this.state);
 
     if (city && country) {
       try {
@@ -85,6 +86,7 @@ class App extends React.Component {
           countries={countries}
           error={this.state.error}
           getWeather={this.getWeather}
+          initial={initial}
           setAlphaTwo={this.setAlphaTwo}
           setError={this.setError}
         />

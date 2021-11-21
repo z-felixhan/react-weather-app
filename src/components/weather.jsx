@@ -10,7 +10,10 @@ const Weather = (props) => {
           <h1 className="location">{props.location}</h1>
           <h5 className="weather-icon">
             <img
-              src={"http://openweathermap.org/img/wn/" + props.icon + "@2x.png"}
+              src={
+                props.icon &&
+                "http://openweathermap.org/img/wn/" + props.icon + "@2x.png"
+              }
               alt=""
             />
           </h5>
