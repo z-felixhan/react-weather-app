@@ -1,58 +1,11 @@
-.btn {
-  background-color: #1a357c;
-  border: 1px solid transparent;
-  border-radius: 5rem;
-  box-shadow: 0.25rem 0.25rem 0.35rem rgba(0, 0, 0, 0.2);
-  color: #99479b;
-  cursor: pointer;
-  font-weight: 700;
-  padding: 0.75rem 1.5rem;
-  transition: 0.25s;
-}
-
-.btn:hover {
-  background: transparent;
-  border: 1px solid white;
-  box-shadow: 0.25rem 0.25rem 0.35rem rgba(0, 0, 0, 0.1);
-  color: white;
-}
-
-.col {
-  flex-basis: 48%;
-  padding: 2rem;
-}
-
-.col input {
-  background-color: rgba(255, 255, 255, 0.25);
-  border: none;
-  border-radius: 5rem;
-  color: rgba(0, 0, 0, 0.75);
-  font-weight: 700;
-  outline: none;
-  padding: 1rem;
-  box-shadow: 0.25rem 0.25rem 0.35rem rgba(0, 0, 0, 0.2);
-  text-align: center;
-  transition: 0.25s;
-}
-
-.col input::placeholder {
-  color: rgba(255, 255, 255, 0.75);
-  font-weight: 400;
-}
-
-.col input:active,
-input:focus {
-  background: rgba(255, 255, 255, 0.75);
-  box-shadow: 0.5rem 0.5rem 0.25rem rgba(0, 0, 0, 0.1);
-}
-
-.col input:active::placeholder,
-input:focus::placeholder {
-  color: grey;
-  transition: 0.25s;
-}
-
-.row {
+.form-container {
+  align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  margin: 2.5rem 0 0;
+  text-align: left;
+}
+
+.form-container > * > * {
+  margin: 0 0.5rem !important;
 }

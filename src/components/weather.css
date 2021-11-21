@@ -2,9 +2,15 @@
   font-family: "Poppins", sans-serif;
 }
 
-.container {
+.weather-container {
+  align-items: center;
+  color: lightgrey !important;
+  height: inherit;
+  justify-content: center;
   margin: 0;
+  margin-top: 5rem;
   padding: 0;
+  text-align: center;
 }
 
 .description {
@@ -32,4 +38,14 @@
   box-shadow: 0.25rem 0.25rem 0.35rem rgba(0, 0, 0, 0.1);
   height: 100%;
   width: auto;
+}
+
+.loader-container {
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
 }
