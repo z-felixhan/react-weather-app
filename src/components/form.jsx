@@ -17,6 +17,7 @@ const Form = (props) => {
         <Grid container>
           <Autocomplete
             id="country"
+            autoHighlight
             getOptionLabel={(option) => option.name}
             onChange={(e, value) => {
               if (value) props.setAlphaTwo({ alphaTwo: [value.alphaTwo][0] });
