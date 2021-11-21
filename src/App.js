@@ -7,15 +7,16 @@ import React from "react";
 const initial = {
   alphaTwo: undefined,
   city: undefined,
+  count: 2,
   description: "",
   error: false,
   icon: undefined,
   location: undefined,
   loading: false,
   main: undefined,
-  temp: undefined,
-  temp_max: undefined,
-  temp_min: undefined,
+  temp: [],
+  temp_max: [],
+  temp_min: [],
 };
 
 class App extends React.Component {
@@ -32,7 +33,6 @@ class App extends React.Component {
 
     const city = e.target.elements.city.value;
     const country = this.state.alphaTwo;
-    console.log(this.state);
 
     if (city && country) {
       try {
@@ -49,9 +49,24 @@ class App extends React.Component {
           loading: false,
           location: res.name + ", " + res.sys.country,
           main: res.weather[0].main,
-          temp: res.main.temp + "\u00B0",
-          temp_max: res.main.temp_max + "\u00B0",
-          temp_min: res.main.temp_min + "\u00B0",
+          temp: [
+            Math.round(res.main.temp) + " K",
+            Math.round((parseFloat(res.main.temp) - 273.15) * 1.8 + 32) +
+              " \u00B0F",
+            Math.round(parseFloat(res.main.temp) - 273.15) + " \u00B0C",
+          ],
+          temp_max: [
+            Math.round(res.main.temp_max) + " K",
+            Math.round((parseFloat(res.main.temp_max) - 273.15) * 1.8 + 32) +
+              " \u00B0F",
+            Math.round(parseFloat(res.main.temp_max) - 273.15) + " \u00B0C",
+          ],
+          temp_min: [
+            Math.round(res.main.temp_min) + " K",
+            Math.round((parseFloat(res.main.temp_min) - 273.15) * 1.8 + 32) +
+              " \u00B0F",
+            Math.round(parseFloat(res.main.temp_min) - 273.15) + " \u00B0C",
+          ],
         });
       } catch (err) {
         this.setState({
@@ -69,6 +84,12 @@ class App extends React.Component {
 
   setAlphaTwo = (alphaTwo) => {
     this.setState(alphaTwo);
+  };
+
+  setCount = () => {
+    this.setState({
+      count: (this.state.count + 1) % 3,
+    });
   };
 
   setError = (error) => {
@@ -97,9 +118,10 @@ class App extends React.Component {
           loading={this.state.loading}
           location={this.state.location}
           main={this.state.main}
-          temp={this.state.temp}
-          temp_max={this.state.temp_max}
-          temp_min={this.state.temp_min}
+          setCount={this.setCount}
+          temp={this.state.temp[this.state.count]}
+          temp_max={this.state.temp_max[this.state.count]}
+          temp_min={this.state.temp_min[this.state.count]}
         />
       </div>
     );

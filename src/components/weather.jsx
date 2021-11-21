@@ -18,8 +18,12 @@ const Weather = (props) => {
             />
           </h5>
           <h4 className="description">{props.description}</h4>
-          <h1 className="temp">{props.temp}</h1>
-          {minmaxTemp(props.temp_min, props.temp_max)}
+          <h1>
+            <span className="temp" onClick={props.setCount}>
+              {props.temp}
+            </span>
+          </h1>
+          {minmaxTemp(props.temp_min, props.temp_max, props)}
         </div>
       ) : (
         <div className="loader-container">
@@ -35,11 +39,11 @@ const Weather = (props) => {
   );
 };
 
-const minmaxTemp = (min, max) => {
+const minmaxTemp = (min, max, props) => {
   return (
     <h3 className="minmaxTemp">
-      <span>{min}</span>
-      <span>{max}</span>
+      <span onClick={props.setCount}>{min}</span>
+      <span onClick={props.setCount}>{max}</span>
     </h3>
   );
 };

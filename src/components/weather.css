@@ -22,9 +22,24 @@
   font-weight: 500;
 }
 
+.temp {
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+.temp:hover {
+  color: white;
+}
+
 .minmaxTemp span {
+  cursor: pointer;
   font-weight: 400;
-  padding: 0 1rem;
+  margin: 0 1rem;
+  transition: all 0.25s ease-in-out;
+}
+
+.minmaxTemp span:hover {
+  color: white;
 }
 
 .weather-icon {
