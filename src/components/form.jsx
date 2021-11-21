@@ -1,31 +1,79 @@
-import "./form.css"
-import React from 'react';
+import "./form.css";
+import {
+  Alert,
+  Autocomplete,
+  Box,
+  Button,
+  Grid,
+  Snackbar,
+  TextField,
+} from "@mui/material";
+import React from "react";
 
-const Form = props => {
-    return (
-        <div className="container">
-            <div>{props.error ? error() : null}</div>
-            <form onSubmit={props.getWeather}>
-                <div className="row">
-                    <div className="col">
-                        <input type="text" name="city" autoComplete="off" placeholder="City" />
-                    </div>
-                    <div className="col">
-                        <input type="text" name="country" autoComplete="off" placeholder="Country" />
-                    </div>
-                </div>
-                <button className="btn">Get Weather</button>
-            </form>
-        </div>
-    );
-}
+const Form = (props) => {
+  return (
+    <>
+      <form className="form-container" onSubmit={props.getWeather}>
+        <Grid container>
+          <Autocomplete
+            id="country"
+            getOptionLabel={(option) => option.name}
+            onChange={(e, value) => {
+              if (value) props.setAlphaTwo({ alphaTwo: [value.alphaTwo][0] });
+            }}
+            options={props.countries}
+            renderInput={(params) => (
+              <TextField {...params} label="Country" required />
+            )}
+            renderOption={(props, option) => (
+              <Box
+                component="li"
+                sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                {...props}
+              >
+                <img
+                  loading="lazy"
+                  width="20"
+                  src={`https://flagcdn.com/w20/${option.alphaTwo.toLowerCase()}.png`}
+                  srcSet={`https://flagcdn.com/w40/${option.alphaTwo.toLowerCase()}.png 2x`}
+                  alt=""
+                />
+                {option.name}
+              </Box>
+            )}
+            sx={{ width: 300 }}
+            disablePortal
+          />
+          <TextField
+            id="city"
+            inputProps={{ style: { textTransform: "capitalize" } }}
+            label="City"
+            variant="outlined"
+            required
+          />
+          <Button type="submit" variant="outlined" disableElevation>
+            Get Weather
+          </Button>
+        </Grid>
+      </form>
+      <div>{props.error ? error(props) : null}</div>
+    </>
+  );
+};
 
-function error () {
-    return (
-        <div>
-            Please enter city and country.
-        </div>
-    );
+function error(props) {
+  return (
+    <Snackbar
+      open={true}
+      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      autoHideDuration={6000}
+      onClose={() => props.setError({ error: false })}
+    >
+      <Alert severity="error" onClose={() => props.setError({ error: false })}>
+        An error was encountered. Please verify input or try again later.
+      </Alert>
+    </Snackbar>
+  );
 }
 
 export default Form;
