@@ -3,19 +3,30 @@
 }
 
 .weather-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.weather-sub-container {
+  background-color: rgba(0, 0, 0, 0.1);
+  background-blend-mode: color;
   align-items: center;
   color: lightgrey !important;
   height: inherit;
   justify-content: center;
   margin: 0;
-  margin-top: 5rem;
-  padding: 0;
+  padding: 1rem;
   text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 1rem;
+  width: 300px;
 }
 
 .description {
   font-size: 0.9rem;
-  font-weight: 200;
+  font-weight: 500;
 }
 
 .location {
