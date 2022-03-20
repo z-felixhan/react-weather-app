@@ -5,8 +5,8 @@ import { CircularProgress } from "@mui/material";
 const Weather = (props) => {
   return (
     <div className="weather-container">
-      <div className="weather-sub-container">
-        {!props.loading ? (
+      {!props.loading ? (
+        <div className={props.location ? "weather-sub-container" : ""}>
           <div>
             <h1 className="location">{props.location}</h1>
             <h5 className="weather-icon">
@@ -26,17 +26,17 @@ const Weather = (props) => {
             </h1>
             {minmaxTemp(props.temp_min, props.temp_max, props)}
           </div>
-        ) : (
-          <div className="loader-container">
-            <CircularProgress
-              sx={{
-                position: "relative",
-                top: "50%",
-              }}
-            />
-          </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className="loader-container">
+          <CircularProgress
+            sx={{
+              position: "relative",
+              top: "50%",
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 };
